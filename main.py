@@ -6,7 +6,7 @@ from report_generation import generate_report
 from unit_test import report_check
 
 def main():
-    total_days = 49
+    total_days = 50
     inventory_records = []
 
     while True:
