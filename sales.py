@@ -2,7 +2,6 @@ import random
 
 def daily_sales(available_items, inventory_records, current_day):
     '''
-    ***********COMPLETE THIS FUNCTION***********
     This function is responsible for updating the sales for a given day.
     ---------------
     Function Input:
@@ -19,13 +18,12 @@ def daily_sales(available_items, inventory_records, current_day):
     The function will also update the inventory_records (For restocking) for a given current day. 
     '''
     
-    # Generate sales for the current day
-    sales_today = random.randint(1, available_items)  # Example sales for the current day
+    if current_day % 7 == 0:
+        return available_items
+    sold_items = random.randint(0, min(200, available_items))
+    available_items -= sold_items
 
-    # Update available items
-    available_items -= sales_today
-
-    # Append the new record to the inventory records
-    inventory_records.append((current_day, sales_today, 0, available_items))
+    inventory_records[-1][1] = sold_items
+    inventory_records[-1][3] = available_items
 
     return available_items

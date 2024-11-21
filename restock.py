@@ -1,6 +1,7 @@
+import random
+
 def restock_inventory(available_items, inventory_records, current_day):
     '''
-    ***********COMPLETE THIS FUNCTION***********
     This function is responsible for updating the stock/restock for a given day.
     ---------------
     Function Input:
@@ -17,14 +18,16 @@ def restock_inventory(available_items, inventory_records, current_day):
     The function will also update the inventory_records (For restocking) for a given current day. It will also return "available_items".
     '''
 
-    # Example logic for sales and restocking
-    sales_today = 10  # Example sales for the current day
-    restocked_items_today = 20  # Example restocked items for the current day
+    restock_amount = 0
+    maximum_stock = 2000
 
-    # Update available items
-    available_items = available_items - sales_today + restocked_items_today
+    if current_day == 0:
+        available_items = 0
+    
+    if current_day % 7 == 0:
+        restock_amount = maximum_stock - available_items
+        available_items += restock_amount
 
-    # Append the new record to the inventory records
-    inventory_records.append((current_day, sales_today, restocked_items_today, available_items))
+    inventory_records.append([current_day, 0, restock_amount, available_items])
 
     return available_items
